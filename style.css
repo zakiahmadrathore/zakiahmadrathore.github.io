@@ -1,0 +1,92 @@
+@media (max-width: 991px) {
+    .navbar-scroll {
+      background-color: #7d8488;
+    }
+  }
+  .navbar-scroll .navbar-brand {
+    color: #fff;
+  }
+
+  .navbar-scrolled {
+    background-color: #7d8488;
+  }
+
+  .navbar-scrolled .navbar-brand,
+  .navbar-scrolled .nav-link,
+  .navbar-scrolled .fa-bars {
+    color: #fff;
+  }
+
+  .border-right {
+    border-right-width: 5px !important;
+    border-right-color: #fff !important;
+  }
+
+  /* Form */
+  .newsletter-signup {
+    /* background-color: #f8f9fa; */
+    padding: 40px 0;
+    text-align: center;
+}
+
+.newsletter-signup h3 {
+    /* color: #333; */
+    margin-bottom: 20px;
+}
+
+.newsletter-signup p {
+    color: rgb(53, 116, 28);
+    margin-bottom: 30px;
+    
+}
+
+.newsletter-signup form {
+    max-width: 400px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center; /* Ensures vertical alignment is centered */
+}
+
+.newsletter-signup input[type="email"] {
+    flex: 1; /* Takes up the remaining space */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    height: 45px; /* Set a fixed height for consistency */
+}
+
+.newsletter-signup button {
+    padding: 10px 15px;
+    background-color: #17a2b8;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    height: 45px; /* Match the height of the input field */
+}
+
+.newsletter-signup button:hover {
+    background-color: #138496;
+}
+.product-gallery img {
+  width: 100%;
+  height: auto;
+  padding: 5px; /* Add padding between images */
+  box-sizing: border-box;
+}
+.product-gallery .col-lg-4 {
+  padding: 0;
+}
+.lightbox {
+  padding-left: 10%;
+  padding-right: 10%;
+}
+.w-100 {
+  padding: 2%;
+}
+#newsletter-button {
+  margin-left: 2%;
+}
+.card {
+  margin: 2%;
+}
