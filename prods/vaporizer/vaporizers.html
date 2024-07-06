@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Inhale Exhale Smoke</title>
+        <!-- Font Awesome -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+      rel="stylesheet"
+    />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.js"></script>
+    
+    <!-- MDB -->
+    <!-- <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.css"
+      rel="stylesheet"
+    />
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.js"
+    ></script> -->
+    <!-- <script src="http://www.w3schools.com/lib/w3data.js"></script> -->
+    <link href="../../style.css" rel="stylesheet">
+    <!-- MDB -->
+        <!-- MDB ESSENTIAL -->
+        <link rel="stylesheet" href="../../mdb/mdb.min.css" />
+        <!-- MDB PAID PLUGINS -->
+        <link rel="stylesheet" href="../../mdb/all.min.css" />
+    <!-- MDB END -->
+
+    <style>
+        .category-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 30px;
+            
+        }
+        .category-button {
+            position: relative;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            background-size: cover;
+            background-position: center;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+        }
+        .category-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 50px;
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+            z-index: 1;
+        }
+        .category-button span {
+            position: relative;
+            z-index: 2;
+            /* mix-blend-mode: difference; Ensures text is readable */
+        }
+        .category-button:hover {
+            transform: scale(1.1);
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+            color: white;
+        }
+        .category {
+            padding: 50px 0;
+        }
+        .category-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .view-btn {
+            display: block;
+            width: 100%;
+            text-align: center;
+            padding: 10px 0;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            text-decoration: none;
+        }
+        .category .bg-image {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .category .bg-image:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .category .view-btn {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #CE5D21;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            text-align: center;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .category .view-btn:hover {
+            background-color: #0056b3;
+        }
+        .category .col-lg-3 {
+            max-width: 200px;
+        }
+
+        .category .bg-image img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .category .view-btn {
+            font-size: 14px;
+            padding: 8px 16px;
+        }
+
+        .category .col-6 {
+            flex: 0 0 auto;
+            width: auto;
+        }
+        .background {
+            /* background-image: url('/products/background.webp'); */
+            background-size: cover; /* Ensures the image covers the entire background */
+            background-position: center; /* Centers the background image */
+            background-repeat: no-repeat; /* Prevents the image from repeating */
+            padding: 20px; /* Optional: Adds padding around the section content */
+        }
+        .intro-text {
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .highlight {
+            font-weight: bold;
+            color: #e43765;
+        }
+
+        .intro-text p {
+            background-color: #f9f9f9;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .icon {
+            margin-right: 10px;
+        }
+
+        .intro-text span {
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .multi-carousel-item img {
+            object-fit: contain;
+            max-height: 400px !important; /* Adjust height as needed */
+            width: 100%;
+            display: block;
+            margin: auto;
+        }
+        .carousel-img-container {
+            width: 150px; /* Adjust the size as needed */
+            height: 150px; /* Adjust the size as needed */
+            overflow: hidden;
+            border-radius: 50%;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .multi-carousel-inner {
+            display: flex;
+            gap: 0; /* Adjust the gap between items */
+        }
+
+        .carousel-img-container {
+            width: 250px; /* Adjust the size as needed */
+            height: 250px; /* Adjust the size as needed */
+            overflow: hidden;
+            border-radius: 50%;
+            margin: 0 auto; /* Center the container */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .carousel-img-container:hover {
+            transform: scale(1.1);
+        }
+
+        .carousel-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .carousel-caption {
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 14px;
+            text-align: center;
+            display: none;
+        }
+
+        .carousel-img-container:hover .carousel-caption {
+            display: block;
+        }
+
+        .multi-carousel-item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            flex-shrink: 0; /* Prevent items from shrinking */
+            margin: 0; /* Remove default margin */
+            padding: 0; /* Remove default padding */
+        }
+
+     
+        .nav-pills .nav-link.active,
+        .nav-pills .show > .nav-link {
+            background-color: #9d7979;
+            color: #000 !important;
+        }
+
+        .nav-pills .nav-link:focus,
+        .nav-pills .nav-link:active {
+            color: #000 !important;
+        }
+
+        .nav-pills .nav-link:hover {
+            color: #9d7979;
+        }
+
+        .tab-pane {
+            background-color: #ffffff;
+            /* padding: 20px; */
+            /* border-radius: 5px; */
+            /* margin-top: 10px; */
+        }
+
+        .nav-pills {
+            justify-content: center;
+        }
+
+        .nav-pills .nav-item {
+            flex: 1;
+        }
+
+        .nav-pills .nav-link {
+            text-align: center;
+        }
+        .tab-content {
+            margin-left: -15px;
+            margin-top: 15px;
+        }
+        .carousel-caption {
+            background-color: unset !important;
+            margin-bottom: 4rem;
+        }
+        .carousel-indicators {
+            margin-bottom: 2.5rem;
+        }
+        .d-block {
+            max-height: 583px;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+<header>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top navbar-scroll" data-mdb-navbar-init>
+      <div class="container">
+        <a class="navbar-brand" href="/index.html#intro">Inhale Exhale</a>
+        <button class="navbar-toggler" type="button" data-mdb-collapse-init data-mdb-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="/index.html#intro">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/index.html#about-us">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/index.html#our-brands">Brands</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/products.html">Products</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/index.html#our-reviews">Opinions</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/index.html#visit-us">Visit</a>
+              </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/index.html#contact-us">Contact</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/apply.html#apply">Apply for Job</a>
+              </li>
+          </ul>
+          <ul class="navbar-nav d-flex flex-row">
+            <li class="nav-item me-3 me-lg-0">
+              <a class="nav-link" href="#!">
+                <i class="fas fa-shopping-cart"></i>
+                <!--Ecommerce Link-->
+              </a>
+            </li>
+            <li class="nav-item me-3 me-lg-0">
+              <a class="nav-link" href="#!">
+                <i class="fab fa-twitter"></i>
+                 <!--Twitter Link-->
+              </a>
+            </li>
+            <li class="nav-item me-3 me-lg-0">
+              <a class="nav-link" href="#!">
+                <i class="fab fa-instagram"></i>
+                 <!--Instagram Link-->
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  
+    <!--Section: Design Block-->
+    <!--Catalog Intro -->
+    <section>
+      <div id="intro" class="bg-image vh-100"
+           style="background-image: url('/pictures/HomePage.webp');">
+        <div class="mask" style="background-color: rgba(0, 0, 0, 0.3);">
+          <div class="d-flex justify-content-end align-items-center h-100 mt-4">
+            <div class="container">
+              <figure class="text-white text-end">
+                <blockquote class="blockquote border-right pe-4" data-mdb-theme="dark">
+                  <h1 class="display-3 font-weight-bold mb-2">Inhale Exhale</h1>
+                  <p class="lead mb-4">Vaporizers Products</p>
+                  <a class="btn btn-outline-light" href="#main-page" data-mdb-ripple-init>Show Me</a>
+                  <a class="btn btn-outline-light" href="/index.html" data-mdb-ripple-init>Home</a>
+                </blockquote>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Catalog Intro -->
+    <!--Section: Design Block-->
+</header>
+  
+<main id ="main-page" class="background">
+    <hr id="products">
+    <div class="container my-5 py-5">
+        <!--Section: Design Block-->
+        <section>
+            <h2 class="text-center mb-5" id="categories-data">Vaporizers</h2>
+            <br><br>
+            <div class="row">
+                <!-- Pills navs -->
+                <ul class="nav nav-pills nav-justified mx-n2 mt-n2" id="issuesTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link active multi-tabs" id="checklists-tab" data-mdb-toggle="pill" href="#checklists" role="tab"
+                            aria-controls="financial" aria-selected="true">Wax Vaporizers
+                        </a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" id="films-tab" data-mdb-toggle="pill" href="#films" role="tab"
+                            aria-controls="Films" aria-selected="false">Flower Vaporizers
+                        </a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" id="paying-tab" data-mdb-toggle="pill" href="#paying" role="tab"
+                            aria-controls="paying" aria-selected="false">Hybrid Vaporizers
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="tab-content" id="servicesContent">
+                    <div class="tab-pane fade show active" id="checklists" role="tabpanel" aria-labelledby="checklists-tab">
+                        <div class="row">
+                            <div class="col-lg-6 mb-4 mb-lg-0 pb-2 pb-lg-0 pb-xl-2 text-center">
+                                <div id="carouselDarkVariant" class="carousel slide carousel-fade carousel-dark" data-mdb-ride="carousel" data-mdb-carousel-init>
+                                    <!-- Indicators -->
+                                    <div class="carousel-indicators">
+                                        <button
+                                            data-mdb-target="#carouselDarkVariant"
+                                            data-mdb-slide-to="0"
+                                            class="active"
+                                            aria-current="true"
+                                            aria-label="Slide 1"
+                                        ></button>
+                                        <button
+                                            data-mdb-target="#carouselDarkVariant"
+                                            data-mdb-slide-to="1"
+                                            aria-label="Slide 1"
+                                        ></button>
+                                        <button
+                                            data-mdb-target="#carouselDarkVariant"
+                                            data-mdb-slide-to="2"
+                                            aria-label="Slide 1"
+                                        ></button>
+                                        <button
+                                            data-mdb-target="#carouselDarkVariant"
+                                            data-mdb-slide-to="3"
+                                            aria-label="Slide 1"
+                                        ></button>
+                                        <button
+                                            data-mdb-target="#carouselDarkVariant"
+                                            data-mdb-slide-to="4"
+                                            aria-label="Slide 1"
+                                        ></button>
+                                        <button
+                                            data-mdb-target="#carouselDarkVariant"
+                                            data-mdb-slide-to="5"
+                                            aria-label="Slide 1"
+                                        ></button>
+                                    </div>
+                                
+                                    <!-- Inner -->
+                                    <div class="carousel-inner">
+                                    <!-- Single item -->
+                                        <div class="carousel-item active">
+                                            <img src="/prods/vaporizer/wax/1.webp" style="border-radius: 2%" class="d-block" alt="Motorbike Smoke"/>
+                                        </div>
+                                        <!-- Single item -->
+                                        <div class="carousel-item">
+                                            <img src="/prods/vaporizer/wax/2.webp" style="border-radius: 2%" class="d-block" alt="Mountaintop"/>
+                                        </div>
+                                        <!-- Single item -->
+                                        <div class="carousel-item">
+                                            <img src="/prods/vaporizer/wax/3.webp" style="border-radius: 2%" class="d-block" alt="Woman Reading a Book"/>
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="/prods/vaporizer/wax/4.webp" style="border-radius: 2%" class="d-block" alt="Woman Reading a Book"/>
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="/prods/vaporizer/wax/5.webp" style="border-radius: 2%" class="d-block" alt="Woman Reading a Book"/>
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="/prods/vaporizer/wax/6.webp" style="border-radius: 2%" class="d-block" alt="Woman Reading a Book"/>
+                                        </div>
+                                    </div>
+                                    <!-- Inner -->
+                                
+                                    <!-- Controls -->
+                                    <button class="carousel-control-prev" type="button" data-mdb-target="#carouselDarkVariant" data-mdb-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button" data-mdb-target="#carouselDarkVariant" data-mdb-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 mt-4">
+                                <br><br>
+                                <h4 class="mb-4">Wax Vaporizers</h4>
+                                <p class="ml-2">Wax vaporizers are designed to provide a convenient and efficient way to enjoy wax 
+                                    concentrates. These devices come in various styles, including Portable Wax Vaporizers, 
+                                    which offer mobility and ease of use, and Pen-Style Vaporizers, known for their sleek 
+                                    and discreet design. Desktop Vaporizers deliver powerful performance for home use, 
+                                    while E-Nails provide precise temperature control for a tailored dabbing experience. 
+                                    Some models feature Dual-Use capabilities, allowing for both wax and dry herb vaporization. 
+                                    Explore the range of wax vaporizers to find the perfect device for your needs.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="films" role="tabpanel" aria-labelledby="films-tab">
+                        <div class="row">
+                            <div class="col-lg-6 mb-4 mb-lg-0 pb-2 pb-lg-0 pb-xl-2 text-center">
+                                <div id="carouselDarkVariant1" class="carousel slide carousel-fade carousel-dark" data-mdb-ride="carousel" data-mdb-carousel-init>
+                                    <!-- Indicators -->
+                                    <div class="carousel-indicators">
+                                        <button
+                                            data-mdb-target="#carouselDarkVariant1"
+                                            data-mdb-slide-to="0"
+                                            class="active"
+                                            aria-current="true"
+                                            aria-label="Slide 1"
+                                        ></button>
+                                        <button
+                                            data-mdb-target="#carouselDarkVariant1"
+                                            data-mdb-slide-to="1"
+                                            aria-label="Slide 2"
+                                        ></button>
+                                        <button
+                                            data-mdb-target="#carouselDarkVariant1"
+                                            data-mdb-slide-to="2"
+                                            aria-label="Slide 3"
+                                        ></button>
+                                        <button
+                                            data-mdb-target="#carouselDarkVariant1"
+                                            data-mdb-slide-to="3"
+                                            aria-label="Slide 4"
+                                        ></button>
+                                        <button
+                                            data-mdb-target="#carouselDarkVariant1"
+                                            data-mdb-slide-to="4"
+                                            aria-label="Slide 5"
+                                        ></button>
+                                        <button
+                                            data-mdb-target="#carouselDarkVariant1"
+                                            data-mdb-slide-to="5"
+                                            aria-label="Slide 6"
+                                        ></button>
+                                    </div>
+                                
+                                    <!-- Inner -->
+                                    <div class="carousel-inner">
+                                        <!-- Single item -->
+                                        <div class="carousel-item active">
+                                            <img src="/prods/vaporizer/flower/1.webp" style="border-radius: 2%" class="d-block" alt="Motorbike Smoke"/>
+                                        </div>
+                                        <!-- Single item -->
+                                        <div class="carousel-item">
+                                            <img src="/prods/vaporizer/flower/2.webp" style="border-radius: 2%" class="d-block" alt="Mountaintop"/>
+                                        </div>
+                                        <!-- Single item -->
+                                        <div class="carousel-item">
+                                            <img src="/prods/vaporizer/flower/3.webp" style="border-radius: 2%" class="d-block" alt="Woman Reading a Book"/>
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="/prods/vaporizer/flower/4.webp" style="border-radius: 2%" class="d-block" alt="Woman Reading a Book"/>
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="/prods/vaporizer/flower/5.webp" style="border-radius: 2%" class="d-block" alt="Woman Reading a Book"/>
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="/prods/vaporizer/flower/6.webp" style="border-radius: 2%" class="d-block" alt="Woman Reading a Book"/>
+                                        </div>
+                                    </div>
+                                    <!-- Inner -->
+                                
+                                    <!-- Controls -->
+                                    <button class="carousel-control-prev" type="button" data-mdb-target="#carouselDarkVariant1" data-mdb-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Previous</span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button" data-mdb-target="#carouselDarkVariant1" data-mdb-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Next</span>
+                                    </button>
+                                </div>
+                                
+                            </div>
+                            <div class="col-lg-6 mt-4">
+                                <br><br><br>
+                                <h4 class="mb-4">Flower Vaporizers</h4>
+                                <p class="mb-0">Weed vaporizers offer a modern and healthier alternative to traditional
+                                     smoking by heating dry herbs to release vapor without combustion. These devices come 
+                                     in various styles, including Portable Vaporizers, which provide convenience and 
+                                     discretion for on-the-go use, and Pen-Style Vaporizers, known for their sleek, 
+                                     easy-to-carry design. Desktop Vaporizers deliver powerful performance and precise 
+                                     temperature control for home use, while Hybrid Vaporizers can handle both dry herbs 
+                                     and concentrates for versatile consumption. Additionally, Convection Vaporizers use 
+                                     hot air for even heating, while Conduction Vaporizers heat herbs through direct 
+                                     contact for quick and efficient vaporization. Find the perfect weed vaporizer to 
+                                     suit your needs and preferences.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="paying" role="tabpanel" aria-labelledby="paying-tab">
+                        <div class="row">
+                            <div class="col-lg-6 mb-4 mb-lg-0 pb-2 pb-lg-0 pb-xl-2 text-center">
+                                <div id="carouselDarkVariant2" class="carousel slide carousel-fade carousel-dark" data-mdb-ride="carousel" data-mdb-carousel-init>
+                                    <!-- Indicators -->
+                                    <div class="carousel-indicators">
+                                        <button
+                                            data-mdb-target="#carouselDarkVariant2"
+                                            data-mdb-slide-to="0"
+                                            class="active"
+                                            aria-current="true"
+                                            aria-label="Slide 1"
+                                        ></button>
+                                        <button
+                                            data-mdb-target="#carouselDarkVariant2"
+                                            data-mdb-slide-to="1"
+                                            aria-label="Slide 2"
+                                        ></button>
+                                        <button
+                                            data-mdb-target="#carouselDarkVariant2"
+                                            data-mdb-slide-to="2"
+                                            aria-label="Slide 3"
+                                        ></button>
+                                        <button
+                                            data-mdb-target="#carouselDarkVariant2"
+                                            data-mdb-slide-to="3"
+                                            aria-label="Slide 4"
+                                        ></button>
+                                        <button
+                                            data-mdb-target="#carouselDarkVariant2"
+                                            data-mdb-slide-to="4"
+                                            aria-label="Slide 5"
+                                        ></button>
+                                        <button
+                                            data-mdb-target="#carouselDarkVariant2"
+                                            data-mdb-slide-to="5"
+                                            aria-label="Slide 6"
+                                        ></button>
+                                        <button
+                                            data-mdb-target="#carouselDarkVariant2"
+                                            data-mdb-slide-to="6"
+                                            aria-label="Slide 6"
+                                        ></button>
+                                    </div>
+                                
+                                    <!-- Inner -->
+                                    <div class="carousel-inner">
+                                        <!-- Single item -->
+                                        <div class="carousel-item active">
+                                            <img src="/prods/vaporizer/hybrid/1.webp" style="border-radius: 2%" class="d-block" alt="Motorbike Smoke"/>
+                                        </div>
+                                        <!-- Single item -->
+                                        <div class="carousel-item">
+                                            <img src="/prods/vaporizer/hybrid/2.webp" style="border-radius: 2%" class="d-block" alt="Mountaintop"/>
+                                        </div>
+                                        <!-- Single item -->
+                                        <div class="carousel-item">
+                                            <img src="/prods/vaporizer/hybrid/3.webp" style="border-radius: 2%" class="d-block" alt="Woman Reading a Book"/>
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="/prods/vaporizer/hybrid/4.webp" style="border-radius: 2%" class="d-block" alt="Woman Reading a Book"/>
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="/prods/vaporizer/hybrid/5.webp" style="border-radius: 2%" class="d-block" alt="Woman Reading a Book"/>
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="/prods/vaporizer/hybrid/6.webp" style="border-radius: 2%" class="d-block" alt="Woman Reading a Book"/>
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="/prods/vaporizer/hybrid/7.webp" style="border-radius: 2%" class="d-block" alt="Woman Reading a Book"/>
+                                        </div>
+                                    </div>
+                                    <!-- Inner -->
+                                
+                                    <!-- Controls -->
+                                    <button class="carousel-control-prev" type="button" data-mdb-target="#carouselDarkVariant2" data-mdb-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Previous</span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button" data-mdb-target="#carouselDarkVariant2" data-mdb-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Next</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 mt-4">
+                                <br><br><br>
+                                <h4 class="mb-4">Hybrid Vaporizers</h4>
+                                <p class="mb-0">Hybrid vaporizers offer the versatility of enjoying both wax concentrates
+                                     and dry herb (flower) in a single device. These vaporizers come in various styles, 
+                                     including Portable Hybrid Vaporizers, which are perfect for on-the-go use, and 
+                                     Desktop Hybrid Vaporizers that provide powerful performance and precise temperature 
+                                     control for home use. Pen-Style Hybrid Vaporizers offer a sleek and discreet option, 
+                                     while Dual-Use Vaporizers feature separate chambers for wax and flower, ensuring 
+                                     optimal vaporization for each. Some models also include advanced heating technologies,
+                                      such as convection and conduction, to deliver smooth and flavorful vapor. 
+                                      Discover the flexibility and convenience of hybrid vaporizers to elevate your 
+                                      vaping experience.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="container">
+                <div id="accessories" class="category">
+                    <div class="category-header">
+                        <h2>Accessories</h2>
+                    </div>
+                    <div class="row">
+                        <p class="intro-text mb-4">
+                            Vaporizer accessories are essential for enhancing and maintaining your vaping experience. 
+                            These accessories include Replacement Coils and Atomizers, which ensure your device 
+                            continues to perform at its best, and Mouthpieces for a clean and comfortable draw. 
+                            Charging Cables and Battery Packs keep your vaporizer powered up and ready to use, 
+                            while Cleaning Tools and Kits help maintain optimal performance. Other important 
+                            accessories are Carrying Cases for safe and convenient transport, Dab Tools for 
+                            handling wax concentrates, and Glass Attachments to improve filtration and cooling. 
+                            Equip your vaporizer with the right accessories to elevate your vaping sessions.
+                        </p>
+                        <div class="multi-carousel" data-mdb-multi-carousel-init>
+                            <div class="multi-carousel-inner">
+                                <div class="multi-carousel-item">
+                                    <div class="carousel-img-container">
+                                        <img src="/prods/vaporizer/accessories/1.webp" class="carousel-img"/>
+                                    </div>
+                                </div>
+                                <div class="multi-carousel-item">
+                                    <div class="carousel-img-container">
+                                        <img src="/prods/vaporizer/accessories/2.webp" class="carousel-img"/>
+                                    </div>
+                                </div>
+                                <div class="multi-carousel-item">
+                                    <div class="carousel-img-container">
+                                        <img src="/prods/vaporizer/accessories/3.webp" class="carousel-img"/>
+                                    </div>
+                                </div>
+                                <div class="multi-carousel-item">
+                                    <div class="carousel-img-container">
+                                        <img src="/prods/vaporizer/accessories/4.webp" class="carousel-img"/>
+                                    </div>
+                                </div>
+                                <div class="multi-carousel-item">
+                                    <div class="carousel-img-container">
+                                        <img src="/prods/vaporizer/accessories/5.webp" class="carousel-img"/>
+                                    </div>
+                                </div>
+                                <div class="multi-carousel-item">
+                                    <div class="carousel-img-container">
+                                        <img src="/prods/vaporizer/accessories/6.webp" class="carousel-img"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="carousel-control-prev" type="button" tabindex="0" data-mdb-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            </button>
+                            <button class="carousel-control-next" type="button" tabindex="0" data-mdb-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+<footer class="bg-light">
+    <!-- Grid container -->
+    <div class="container d-flex justify-content-center text-center py-5">
+        <!--Grid row-->
+        <div class="row">
+        <!--Grid column-->
+        <div class="col-12">
+            <!-- Facebook -->
+            <a type="button" class="btn btn-floating btn-info btn-lg mx-1" data-mdb-ripple-init><i class="fab fa-facebook-f"></i></a>
+            <!-- Twitter -->
+            <a type="button" class="btn btn-floating btn-info btn-lg mx-1" data-mdb-ripple-init><i class="fab fa-twitter"></i></a>
+            <!-- Google + -->
+            <!-- <a type="button" class="btn btn-floating btn-info btn-lg mx-1" data-mdb-ripple-init><i class="fab fa-google-plus-g"></i></a> -->
+            <!-- Youtube -->
+            <!-- <a type="button" class="btn btn-floating btn-info btn-lg mx-1" data-mdb-ripple-init><i class="fab fa-youtube"></i></a> -->
+            <!-- Instagram -->
+            <a type="button" class="btn btn-floating btn-info btn-lg mx-1" data-mdb-ripple-init><i class="fab fa-instagram"></i></a>
+        </div>
+        <!--Grid column-->
+        </div>
+        <!--Grid row-->
+    </div>
+    <!-- Grid container -->
+    
+    <!-- Copyright -->
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2024 Copyright:
+        <a>Inhale Exhale SmokeShop</a>
+    </div>
+    <!-- Copyright -->
+</footer>
+
+      <!-- MDB -->
+<!-- MDB PAID UMD IMPORT-->
+<script type="text/javascript" src="../../mdb/mdb.umd.min.js"></script>
+<!-- MDB PAID PLUGINS JS -->
+<script type="text/javascript" src="../../mdb/all.min.js"></script>
+<!-- MDB END -->
+</html>
