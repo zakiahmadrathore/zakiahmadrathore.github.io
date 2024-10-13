@@ -90,3 +90,15 @@
 .card {
   margin: 2%;
 }
+
+/* Make sure the navbar is fixed and styled correctly */
+.navbar {
+  background-color: darkred; /* Adjust the background color as needed */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Optional: Adjust the transition effect when the navbar shrinks on scroll */
+.navbar-scroll {
+  transition: all 0.3s ease-in-out;
+}
