@@ -90,9 +90,20 @@
         });
       }
     </script>
+    
+    
 </head>
 
-<body onload="initMap()">
+<body>
+  <!-- Age Verification Modal -->
+<div id="ageVerification" class="modal">
+  <div class="modal-content" style="width: 50%;">
+    <h2>Are you 21+?</h2>
+    <p>You must be 21 years of age or older to visit this site.</p>
+    <button id="yesBtn" class="btn btn-dark">Yes</button>
+    <button id="noBtn" class="btn btn-danger">No</button>
+  </div>
+</div>
 <header>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg fixed-top navbar-scroll" data-mdb-navbar-init>
@@ -352,11 +363,12 @@
             </div>
           </div>
         </div>
+        <div id="our-reviews"></div>
       </section>
       
       <!--Section: Design Block-->
   
-      <hr class="my-5" id="our-reviews" />
+      <hr class="my-5"/>
   
       <!--Section: Design Block-->
       <section class="text-center">
@@ -482,7 +494,7 @@
                   <h5 class="mt-2 mb-3" style="color: #e43765;">
                      Kenzie
                   </h5>
-                  <p>
+                  <p id="visit-us">
                     "This shop is in a great location, and their vape products are top-notch. The owner 
                     is very knowledgeable about all things vape."
                   </p>
@@ -494,11 +506,11 @@
       </section>
       <!--Section: Design Block-->
   
-      <hr class="my-5" id="visit-us"/>
+      <hr class="my-5" />
   
       <!--Section: Design Block-->
       <section class="text-center">
-        <h3 class="mb-5">Visit Us</h3>
+        <h3 class="mb-5" >Visit Us</h3>
     
         <p class="mb-5 mx-auto w-responsive">
             Step into a world where quality and community meet. At Inhale Exhale, 
@@ -522,11 +534,12 @@
                 <div id="map" style="width:100%; height:500px;"></div>
             </div>
         </div>
+        <div id="contact-us"></div>
     </section>
     
       <!--Section: Design Block-->
   
-      <hr class="my-5" id="contact-us"/>
+      <hr class="my-5" />
   
       <!--Section: Design Block-->
       <section class="text-center mb-5">
@@ -625,6 +638,37 @@
     <!-- Copyright -->
   </footer>
 </body>
+
+<script>
+  // Show the modal when the page loads
+  window.onload = function() {
+    var ageVerified = localStorage.getItem("ageVerified");
+    var ageVerifiedTime = localStorage.getItem("ageVerifiedTime");
+    var currentTime = new Date().getTime();
+
+    // Check if age verification expired (1 day = 86400000 milliseconds)
+    if (!ageVerified || (currentTime - ageVerifiedTime > 600000)) {
+      localStorage.removeItem("ageVerified");  // Clear previous verification
+      localStorage.removeItem("ageVerifiedTime");
+      document.getElementById('ageVerification').style.display = "block";
+    } else {
+      initMap();  // Initialize the map immediately if age is already verified
+    }
+  }
+
+  // Handling the Yes and No button clicks
+  document.getElementById('yesBtn').onclick = function() {
+    localStorage.setItem("ageVerified", "true");  // Store user decision
+    localStorage.setItem("ageVerifiedTime", new Date().getTime());  // Store the time of verification
+    document.getElementById('ageVerification').style.display = "none";  // Hide the modal
+    initMap();  // Initialize the map when "Yes" is clicked
+  }
+
+  document.getElementById('noBtn').onclick = function() {
+    alert("You must be 21 years or older to enter.");
+    window.location.href = "https://www.google.com";  // Redirect to another site
+  }
+</script>
 
 <script src="email.js"></script>
 <!-- MDB -->
