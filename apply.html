@@ -33,6 +33,17 @@
         <link rel="stylesheet" href="mdb/all.min.css" />
     <!-- MDB END -->
 
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+    </script>
+    <script type="text/javascript">
+      (function(){
+          emailjs.init({
+            publicKey: "nFfTpcY9br3_SVS9S",
+          });
+      })();
+    </script>
+
 </head>
 
 <body>
@@ -40,7 +51,9 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg fixed-top navbar-scroll" data-mdb-navbar-init>
       <div class="container">
-        <a class="navbar-brand" href="index.html#intro">Inhale Exhale</a>
+        <a class="navbar-brand" href="index.html#intro">
+          <img src="/Logo-removebg.png" alt="Inhale Exhale Logo" height="40"> <!-- Adjust height or width as needed -->
+        </a>
         <button class="navbar-toggler" type="button" data-mdb-collapse-init data-mdb-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <i class="fas fa-bars"></i>
@@ -108,75 +121,63 @@
   
         <div class="card" style="border-radius: 15px;">
           <div class="card-body">
-
-            <div class="row align-items-center pt-4 pb-3">
-              <div class="col-md-3 ps-5">
-
-                <h6 class="mb-0">Full name</h6>
-
+            <form id="job-application-form">
+              <!-- Full Name Field -->
+              <div class="row mb-4">
+                <div class="col-md-3 ps-5">
+                  <h6 class="mb-0">Full Name</h6>
+                </div>
+                <div class="col-md-9 pe-5">
+                  <input type="text" id="jobname" class="form-control form-control-lg" required />
+                </div>
               </div>
-              <div class="col-md-9 pe-5">
-
-                <input type="text" class="form-control form-control-lg" />
-
+        
+              <hr class="mx-n3">
+        
+              <!-- Email Address Field -->
+              <div class="row mb-4">
+                <div class="col-md-3 ps-5">
+                  <h6 class="mb-0">Email Address</h6>
+                </div>
+                <div class="col-md-9 pe-5">
+                  <input type="email" id="jobemail" class="form-control form-control-lg" required placeholder="example@example.com" />
+                </div>
               </div>
-            </div>
-
-            <hr class="mx-n3">
-
-            <div class="row align-items-center py-3">
-              <div class="col-md-3 ps-5">
-
-                <h6 class="mb-0">Email address</h6>
-
+        
+              <hr class="mx-n3">
+        
+              <!-- Subject Field -->
+              <div class="row mb-4">
+                <div class="col-md-3 ps-5">
+                  <h6 class="mb-0">Subject</h6>
+                </div>
+                <div class="col-md-9 pe-5">
+                  <input type="text" id="jobsubject" class="form-control form-control-lg" required />
+                </div>
               </div>
-              <div class="col-md-9 pe-5">
-
-                <input type="email" class="form-control form-control-lg" placeholder="example@example.com" />
-
+        
+              <hr class="mx-n3">
+        
+              <!-- Message Field -->
+              <div class="row mb-4">
+                <div class="col-md-3 ps-5">
+                  <h6 class="mb-0">Message</h6>
+                </div>
+                <div class="col-md-9 pe-5">
+                  <textarea id="jobmessage" class="form-control" rows="3" required placeholder="Message sent to the employer"></textarea>
+                </div>
               </div>
-            </div>
-
-            <hr class="mx-n3">
-
-            <div class="row align-items-center py-3">
-              <div class="col-md-3 ps-5">
-
-                <h6 class="mb-0">Full name</h6>
-
+        
+              <hr class="mx-n3">
+        
+              <!-- Submit Button -->
+              <div class="px-5 py-4 text-center">
+                <button type="submit" class="btn btn-primary btn-lg">Send Application</button>
               </div>
-              <div class="col-md-9 pe-5">
-
-                <textarea class="form-control" rows="3" placeholder="Message sent to the employer"></textarea>
-
-              </div>
-            </div>
-
-            <hr class="mx-n3">
-
-            <div class="row align-items-center py-3">
-              <div class="col-md-3 ps-5">
-
-                <h6 class="mb-0">Upload CV</h6>
-
-              </div>
-              <div class="col-md-9 pe-5">
-
-                <input class="form-control form-control-lg" id="formFileLg" type="file" />
-                <div class="small text-muted mt-2">Upload your CV/Resume or any other relevant file. Max file
-                  size 50 MB</div>
-
-              </div>
-            </div>
-
-            <hr class="mx-n3">
-
-            <div class="px-5 py-4">
-              <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-lg">Send application</button>
-            </div>
-
+            </form>
           </div>
         </div>
+        
       </section>
       <!--Section: Design Block-->
     </div>
@@ -215,6 +216,7 @@
     <!-- Copyright -->
   </footer>
 </body>
+<script src="jobapplication.js"></script>
 <!-- MDB -->
 <!-- MDB PAID UMD IMPORT-->
 <script type="text/javascript" src="mdb/mdb.umd.min.js"></script>
