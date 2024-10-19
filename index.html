@@ -33,14 +33,73 @@
         <link rel="stylesheet" href="mdb/all.min.css" />
     <!-- MDB END -->
 
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+    </script>
+    <script type="text/javascript">
+      (function(){
+          emailjs.init({
+            publicKey: "nFfTpcY9br3_SVS9S",
+          });
+      })();
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBPdBO5Kf1Qy427JSrwYrM0u5f9nuIEt5Y"></script>
+    <script>
+      function initMap() {
+        // Define the two locations
+        var location1 = { lat: 39.6525335, lng: -75.75209 };
+        var location2 = { lat: 39.6434121, lng: -75.7263323 };
+        
+        // Create the map, centered between the two locations
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 14,
+          center: { lat: 39.648, lng: -75.739 }, // Midpoint between the two locations
+        });
+        
+        // Add info windows with a link to Google Maps directions for location1
+        var infoWindow1 = new google.maps.InfoWindow({
+          content: '<div><strong>Inhale Exhale Location 1</strong><br><a href="https://maps.app.goo.gl/q8pyYmJUoEKGQjpYA" target="_blank" style="color:blue;">Get Directions</a></div>'
+        });
+        
+        // Add info windows with a link to Google Maps directions for location2
+        var infoWindow2 = new google.maps.InfoWindow({
+          content: '<div><strong>Inhale Exhale Location 2</strong><br><a href="https://maps.app.goo.gl/f3SyGg7b9gMHYwjy8" target="_blank" style="color:blue;">Get Directions</a></div>'
+        });
+
+        // Add markers for both locations
+        var marker1 = new google.maps.Marker({
+          position: location1,
+          map: map,
+          title: 'Inhale Exhale Location 1'
+        });
+        
+        var marker2 = new google.maps.Marker({
+          position: location2,
+          map: map,
+          title: 'Inhale Exhale Location 2'
+        });
+
+        // Show info window on marker click for location1
+        marker1.addListener('click', function() {
+          infoWindow1.open(map, marker1);
+        });
+        
+        // Show info window on marker click for location2
+        marker2.addListener('click', function() {
+          infoWindow2.open(map, marker2);
+        });
+      }
+    </script>
 </head>
 
-<body>
+<body onload="initMap()">
 <header>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg fixed-top navbar-scroll" data-mdb-navbar-init>
       <div class="container">
-        <a class="navbar-brand" href="#intro">Inhale Exhale</a>
+        <a class="navbar-brand" href="#intro">
+          <img src="/Logo-removebg.png" alt="Inhale Exhale Logo" height="40"> <!-- Adjust height or width as needed -->
+        </a>
         <button class="navbar-toggler" type="button" data-mdb-collapse-init data-mdb-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <i class="fas fa-bars"></i>
@@ -452,14 +511,15 @@
     
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <iframe 
-                    src="https://www.google.com/maps/d/embed?mid=10cygCMCFxchUjlYKQYSZnljjFimn8hE&hl=en&ehbc=2E312F" 
+                <!-- <iframe 
+                    src="https://www.google.com/maps/d/embed?mid=10cygCMCFxchUjlYKQYSZnljjFimn8hE&hl=en&ehbc=2E312F&output=embed" 
                     width="100%" 
                     height="480" 
                     style="border:0;" 
                     allowfullscreen="" 
                     loading="lazy">
-                </iframe>
+                </iframe> -->
+                <div id="map" style="width:100%; height:500px;"></div>
             </div>
         </div>
     </section>
@@ -477,30 +537,30 @@
           Alternatively, you can also leave a review about your experience. This will help customers make an informed decision.
         </p>
   
-        <form>
+        <form id="contact-form">
           <div class="row">
             <div class="col-md-9">
               <div class="row mb-4">
                 <div class="col-md-6 mb-4 mb-md-0">
                   <div class="form-outline" data-mdb-input-init>
-                    <input type="text" id="form3Example1" class="form-control" />
-                    <label class="form-label" for="form3Example1">First name</label>
+                    <input type="text" id="name" class="form-control" required />
+                    <label class="form-label" for="name">Full Name</label>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-outline" data-mdb-input-init>
-                    <input type="email" id="form3Example2" class="form-control" />
-                    <label class="form-label" for="form3Example2">Email Address</label>
+                    <input type="email" id="email" class="form-control" required />
+                    <label class="form-label" for="email">Email Address</label>
                   </div>
                 </div>
               </div>
               <div class="form-outline mb-4" data-mdb-input-init>
-                <input type="text" id="form3Example3" class="form-control" />
-                <label class="form-label" for="form3Example3">Subject</label>
+                <input type="text" id="subject" class="form-control" required />
+                <label class="form-label" for="subject">Subject</label>
               </div>
               <div class="form-outline mb-4" data-mdb-input-init>
-                <textarea class="form-control" id="form4Example3" rows="4"></textarea>
-                <label class="form-label" for="form4Example3">Message</label>
+                <textarea class="form-control" id="message" rows="4" required></textarea>
+                <label class="form-label" for="message">Message</label>
               </div>
               <div class="text-center text-md-start">
                 <button type="submit" class="btn btn-dark btn-lg mb-5 mb-md-0" data-mdb-ripple-init>
@@ -520,12 +580,14 @@
                 </li>
                 <li>
                   <i class="fas fa-envelope fa-2x text-dark"></i>
-                  <p class="mb-0">corporate@inhaleexhale.com</p>
+                  <p class="mb-0">contactus@inhaleexhale.shop</p>
                 </li>
               </ul>
             </div>
           </div>
         </form>
+        
+        
       </section>
       <!--Section: Design Block-->
     </div>
@@ -563,6 +625,8 @@
     <!-- Copyright -->
   </footer>
 </body>
+
+<script src="email.js"></script>
 <!-- MDB -->
 <!-- MDB PAID UMD IMPORT-->
 <script type="text/javascript" src="mdb/mdb.umd.min.js"></script>
