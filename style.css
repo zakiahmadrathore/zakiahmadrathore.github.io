@@ -123,8 +123,6 @@
   width: 50%;
   text-align: center;
 }
-
-.btn {
+#yesBtn, #noBtn {
   margin: 10px;
 }
-
