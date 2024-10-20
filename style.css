@@ -126,3 +126,11 @@
 #yesBtn, #noBtn {
   margin: 10px;
 }
+@media (max-width: 768px) {
+  #contact-form .col-md-2 {
+    display: inline-block;
+    width: 45%;
+    vertical-align: top;
+    margin-bottom: 20px;
+  }
+}
