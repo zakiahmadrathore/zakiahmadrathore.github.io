@@ -47,8 +47,8 @@
     <script>
       function initMap() {
         // Define the two locations
-        var location1 = { lat: 39.5077804, lng: -76.1676534 };
-        var location2 = { lat: 39.5613894, lng: -76.3730356 };
+        var location1 = { lat: 39.507798619885, lng: -76.16504288298556 };
+        var location2 = { lat: 39.561516806828784, lng: -76.37041037719084 };
     
         // Create the map, without specifying a fixed center yet
         var map = new google.maps.Map(document.getElementById('map'), {
@@ -61,13 +61,13 @@
         // Add info windows with a link to Google Maps directions for location1
         var infoWindow1 = new google.maps.InfoWindow({
           content:
-            '<div><strong>Inhale Exhale Location 2</strong><br><a href="https://maps.app.goo.gl/nee6AZEN89SRJSkJ6" target="_blank" style="color:blue;">Get Directions</a></div>',
+            '<div><strong>Inhale Exhale Aberdeen</strong><br><a href="https://maps.app.goo.gl/roj9SBgpWXujaagD7" target="_blank" style="color:blue;">Get Directions</a></div>',
         });
     
         // Add info windows with a link to Google Maps directions for location2
         var infoWindow2 = new google.maps.InfoWindow({
           content:
-            '<div><strong>Inhale Exhale Location 1</strong><br><a href="https://maps.app.goo.gl/roj9SBgpWXujaagD7" target="_blank" style="color:blue;">Get Directions</a></div>',
+            '<div><strong>Inhale Exhale Forest Hill</strong><br><a href="https://maps.app.goo.gl/nee6AZEN89SRJSkJ6" target="_blank" style="color:blue;">Get Directions</a></div>',
         });
     
         // Add markers for both locations
@@ -563,7 +563,7 @@
   
         <form id="contact-form">
           <div class="row">
-            <div class="col-md-9">
+            <div class="col-md-8">
               <div class="row mb-4">
                 <div class="col-md-6 mb-4 mb-md-0">
                   <div class="form-outline" data-mdb-input-init>
@@ -592,7 +592,7 @@
                 </button>
               </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-2">
               <ul class="list-unstyled mb-0">
                 <li>
                   <i class="fas fa-map-marker-alt fa-2x text-dark"></i>
@@ -605,6 +605,17 @@
                 <li>
                   <i class="fas fa-envelope fa-2x text-dark"></i>
                   <p class="mb-0">contactus@inhaleexhale.shop</p>
+                </li>
+              </ul>
+            </div>
+            <div class="col-md-2">
+              <ul class="list-unstyled mb-0">
+                <li>
+                  <i class="fas fa-map-marker-alt fa-2x text-dark"></i>
+                  <p>1523 Rock Spring Rd, Forest Hill, MD 21050</p>
+                </li>
+                <li>
+                  <p><strong>COMING SOON</strong></p>
                 </li>
               </ul>
             </div>
@@ -658,7 +669,7 @@
     var currentTime = new Date().getTime();
 
     // Check if age verification expired (1 day = 86400000 milliseconds)
-    if (!ageVerified || (currentTime - ageVerifiedTime > 6000)) {
+    if (!ageVerified || (currentTime - ageVerifiedTime > 600000)) {
       localStorage.removeItem("ageVerified");  // Clear previous verification
       localStorage.removeItem("ageVerifiedTime");
       document.getElementById('ageVerification').style.display = "block";
