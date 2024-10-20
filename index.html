@@ -70,6 +70,9 @@
             '<div><strong>Inhale Exhale Forest Hill</strong><br><a href="https://maps.app.goo.gl/nee6AZEN89SRJSkJ6" target="_blank" style="color:blue;">Get Directions</a></div>',
         });
     
+        // Keep track of the currently opened InfoWindow
+        var currentInfoWindow = null;
+    
         // Add markers for both locations
         var marker1 = new google.maps.Marker({
           position: location1,
@@ -91,15 +94,24 @@
     
         // Show info window on marker click for location1
         marker1.addListener('click', function () {
-          infoWindow1.open(map, marker1);
+          if (currentInfoWindow) {
+            currentInfoWindow.close(); // Close any previously opened info windows
+          }
+          infoWindow1.open(map, marker1); // Open the current info window
+          currentInfoWindow = infoWindow1; // Store the current info window
         });
     
         // Show info window on marker click for location2
         marker2.addListener('click', function () {
-          infoWindow2.open(map, marker2);
+          if (currentInfoWindow) {
+            currentInfoWindow.close(); // Close any previously opened info windows
+          }
+          infoWindow2.open(map, marker2); // Open the current info window
+          currentInfoWindow = infoWindow2; // Store the current info window
         });
       }
     </script>
+    
     
     
     
