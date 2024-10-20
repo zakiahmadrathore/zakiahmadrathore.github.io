@@ -47,49 +47,60 @@
     <script>
       function initMap() {
         // Define the two locations
-        var location1 = { lat: 39.6525335, lng: -75.75209 };
-        var location2 = { lat: 39.6434121, lng: -75.7263323 };
-        
-        // Create the map, centered between the two locations
+        var location1 = { lat: 39.5077804, lng: -76.1676534 };
+        var location2 = { lat: 39.5613894, lng: -76.3730356 };
+    
+        // Create the map, without specifying a fixed center yet
         var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 14,
-          center: { lat: 39.648, lng: -75.739 }, // Midpoint between the two locations
+          zoom: 12,
         });
-        
+    
+        // Create bounds that will extend to include both markers
+        var bounds = new google.maps.LatLngBounds();
+    
         // Add info windows with a link to Google Maps directions for location1
         var infoWindow1 = new google.maps.InfoWindow({
-          content: '<div><strong>Inhale Exhale Location 1</strong><br><a href="https://maps.app.goo.gl/q8pyYmJUoEKGQjpYA" target="_blank" style="color:blue;">Get Directions</a></div>'
+          content:
+            '<div><strong>Inhale Exhale Location 2</strong><br><a href="https://maps.app.goo.gl/nee6AZEN89SRJSkJ6" target="_blank" style="color:blue;">Get Directions</a></div>',
         });
-        
+    
         // Add info windows with a link to Google Maps directions for location2
         var infoWindow2 = new google.maps.InfoWindow({
-          content: '<div><strong>Inhale Exhale Location 2</strong><br><a href="https://maps.app.goo.gl/f3SyGg7b9gMHYwjy8" target="_blank" style="color:blue;">Get Directions</a></div>'
+          content:
+            '<div><strong>Inhale Exhale Location 1</strong><br><a href="https://maps.app.goo.gl/roj9SBgpWXujaagD7" target="_blank" style="color:blue;">Get Directions</a></div>',
         });
-
+    
         // Add markers for both locations
         var marker1 = new google.maps.Marker({
           position: location1,
           map: map,
-          title: 'Inhale Exhale Location 1'
+          title: 'Inhale Exhale Location 1',
         });
-        
         var marker2 = new google.maps.Marker({
           position: location2,
           map: map,
-          title: 'Inhale Exhale Location 2'
+          title: 'Inhale Exhale Location 2',
         });
-
+    
+        // Extend the bounds to include each marker's position
+        bounds.extend(marker1.getPosition());
+        bounds.extend(marker2.getPosition());
+    
+        // Automatically adjust the map to fit both markers
+        map.fitBounds(bounds);
+    
         // Show info window on marker click for location1
-        marker1.addListener('click', function() {
+        marker1.addListener('click', function () {
           infoWindow1.open(map, marker1);
         });
-        
+    
         // Show info window on marker click for location2
-        marker2.addListener('click', function() {
+        marker2.addListener('click', function () {
           infoWindow2.open(map, marker2);
         });
       }
     </script>
+    
     
     
 </head>
@@ -515,7 +526,7 @@
         <p class="mb-5 mx-auto w-responsive">
             Step into a world where quality and community meet. At Inhale Exhale, 
             we're more than just a smoke shop — we're a destination for connoisseurs and enthusiasts alike. 
-            Located in the heart of Delaware, our store offers an extensive selection of premium cigars, 
+            Located in the heart of Maryland, our store offers an extensive selection of premium cigars, 
             vapes, hookahs, and other smoking accessories in a relaxed and friendly atmosphere. 
             Come by to explore our top-notch brands, learn from our knowledgeable staff, or just enjoy a moment of 
             peace with your favorite smoke. We're open everyday, ready to serve you with the finest products and a smile.
@@ -585,11 +596,11 @@
               <ul class="list-unstyled mb-0">
                 <li>
                   <i class="fas fa-map-marker-alt fa-2x text-dark"></i>
-                  <p>Newark, DE, 10012, USA</p>
+                  <p>110 S Philadelphia Blvd, Aberdeen, MD 21001</p>
                 </li>
                 <li>
                   <i class="fas fa-phone fa-2x text-dark"></i>
-                  <p>+1 234 567 8916</p>
+                  <p>+1 410 891 0033</p>
                 </li>
                 <li>
                   <i class="fas fa-envelope fa-2x text-dark"></i>
@@ -647,7 +658,7 @@
     var currentTime = new Date().getTime();
 
     // Check if age verification expired (1 day = 86400000 milliseconds)
-    if (!ageVerified || (currentTime - ageVerifiedTime > 600000)) {
+    if (!ageVerified || (currentTime - ageVerifiedTime > 6000)) {
       localStorage.removeItem("ageVerified");  // Clear previous verification
       localStorage.removeItem("ageVerifiedTime");
       document.getElementById('ageVerification').style.display = "block";
