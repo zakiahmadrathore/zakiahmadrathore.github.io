@@ -126,3 +126,33 @@
 #yesBtn, #noBtn {
   margin: 10px;
 }
+@media (max-width: 768px) {
+  #contact-form .col-md-2 {
+    display: inline-block;
+    width: 45%;
+    vertical-align: top;
+    margin-bottom: 20px;
+  }
+}
+/* Style for the Back to Top Button */
+#backToTopBtn {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  bottom: 20px; /* Distance from the bottom */
+  right: 20px; /* Distance from the right */
+  z-index: 99; /* Stay on top of other elements */
+  font-size: 18px; /* Increase font size */
+  background-color: darkred; /* Blue button background color */
+  color: gray; /* Button text color */
+  border: none; /* Remove borders */
+  outline: none; /* Remove outline */
+  cursor: pointer; /* Pointer/hand icon */
+  border-radius: 50%; /* Circle button */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
+  transition: opacity 0.3s, box-shadow 0.3s; /* Transition effect when showing the button */            
+}
+
+#backToTopBtn:hover {
+  background-color: #365b83; /* Darker blue on hover */
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.4); /* Increase shadow on hover */
+}
