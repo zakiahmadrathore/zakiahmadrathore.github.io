@@ -292,10 +292,11 @@
             <a href="#hookah" class="category-button" style="background-image: url('products/categories/hookah.webp');"><span>HOOKAH</span></a>
             <a href="#lifestyle" class="category-button" style="background-image: url('products/categories/lifestyle.webp');"><span>LIFESTYLE</span></a>
             <a href="#torches" class="category-button" style="background-image: url('products/categories/torches.webp');"><span>TORCHES</span></a>
+            <div id="glass"></div>
         </div>
     
         <!-- Categories -->
-        <div id="glass" class="category">
+        <div class="category">
             <div class="category-header">
                 <h4>GLASS</h4>
             </div>
@@ -342,9 +343,10 @@
                     <a href="/prods/glass/glass.html" class="view-btn">Accessories</a>
                 </div>
             </div>
+            <div id="vaporizer"></div>
         </div>
     
-        <div id="vaporizer" class="category">
+        <div class="category">
             <div class="category-header">
                 <h4>VAPORIZER</h4>
             </div>
@@ -405,9 +407,10 @@
                     <a href="/prods/vaporizer/vaporizers.html" class="view-btn">Accessories</a>
                 </div>
             </div>
+            <div id="cbd"></div>
         </div>
     
-        <div id="cbd" class="category">
+        <div class="category">
             <div class="category-header">
                 <h4>CBD</h4>
             </div>
@@ -482,11 +485,11 @@
                     </div>
                     <a href="/prods/cbd/cbd.html" class="view-btn">CBD Ciggerates</a>
                 </div>
-                
             </div>
+            <div id="trays-grinder"></div>
         </div>
     
-        <div id="trays-grinder" class="category">
+        <div class="category">
             <div class="category-header">
                 <h4>TRAYS/GRINDER</h4>
             </div>
@@ -548,9 +551,10 @@
                     <a href="/prods/grinders/grinder.html" class="view-btn">Rolling Papers</a>
                 </div>
             </div>
+            <div id="kratom"></div>
         </div>
     
-        <div id="kratom" class="category">
+        <div class="category">
             <div class="category-header">
                 <h4>KRATOM</h4>
             </div>
@@ -597,11 +601,11 @@
                     </div>
                     <a href="/prods/kratom/kratom.html" class="view-btn">Red Vein</a>
                 </div>
-                </div>
             </div>
+            <div id="hookah"></div>
         </div>
     
-        <div id="hookah" class="category">
+        <div class="category">
             <div class="category-header">
                 <h4>HOOKAH</h4>
             </div>
@@ -649,9 +653,10 @@
                     <a href="/prods/hookah/hookah.html" class="view-btn">Accessories</a>
                 </div>
             </div>
+            <div id="lifestyle"></div>
         </div>
     
-        <div id="lifestyle" class="category">
+        <div class="category">
             <div class="category-header">
                 <h4>LIFESTYLE</h4>
             </div>
@@ -699,9 +704,10 @@
                     <a href="/prods/lifestyle/lifestyle.html" class="view-btn">Tees</a>
                 </div>
             </div>
+            <div id="torches"></div>
         </div>
     
-        <div id="torches" class="category">
+        <div class="category">
             <div class="category-header">
                 <h4>TORCHES</h4>
             </div>
@@ -784,6 +790,30 @@
     </div>
     <!-- Copyright -->
 </footer>
+
+<button onclick="topFunction()" id="backToTopBtn" class="btn btn-primary btn-floating"><i class="fas fa-arrow-up"></i></button>
+<script>
+    // Get the button:
+    let mybutton = document.getElementById("backToTopBtn");
+    
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {scrollFunction()};
+    
+    function scrollFunction() {
+      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        mybutton.style.display = "block";
+      } else {
+        mybutton.style.display = "none";
+      }
+    }
+    
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+      document.body.scrollTop = 0; // For Safari
+      document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE, and Opera
+    }
+</script>
+</body>
 
       <!-- MDB -->
 <!-- MDB PAID UMD IMPORT-->
